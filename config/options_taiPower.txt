@@ -1,0 +1,4 @@
+--disable-notifications
+--disable-dev-shm-usage
+--disable-gpu
+--headless

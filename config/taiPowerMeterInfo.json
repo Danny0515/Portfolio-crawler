@@ -1,0 +1,12 @@
+{
+  "<key直接用電號1>": {
+    "name": "XXX股份有限公司",
+    "address": "XX路XX號",
+    "meterListPageButton": "//*[@id=\"pageMeterNoList\"]/div[2]/table/tbody/tr[1]/td[4]/form/input[2]"
+  },
+  "<key直接用電號2>": {
+    "name": "XXX股份有限公司",
+    "address": "XX路XX號",
+    "meterListPageButton":  "//*[@id=\"pageMeterNoList\"]/div[2]/table/tbody/tr[2]/td[4]/form/input[2]"
+  }
+}
