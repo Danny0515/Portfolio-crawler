@@ -1,0 +1,18 @@
+{
+  "LOG_BACKUP_DAYS": 7,
+  "sheets": {
+    "inputSheetID": "1OPrqQDAfPfy9iH-alKnPAIGNSdTne9Y6Dn7QQHhTNXk",
+    "inputTable": "工作表1",
+    "productCodeColumn": "A",
+    "outputSheetID": "1OPrqQDAfPfy9iH-alKnPAIGNSdTne9Y6Dn7QQHhTNXk",
+    "outputTable": "test",
+    "outputColumn": "C"
+  },
+  "gmail": {
+    "applicationPwd": "emxlrrdvpatxaxnz",
+    "subject": "GU crawler report at {}",
+    "sender": "da.danny0515@gmail.com",
+    "recipient": "da.danny0515@gmail.com,harperchen@tradeserv.com",
+    "cc": ""
+  }
+}

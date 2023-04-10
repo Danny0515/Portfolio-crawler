@@ -1,0 +1,9 @@
+# Common
+.idea/
+*.pyc
+*.log
+logs/
+
+# GU
+credentials.json
+token.json
