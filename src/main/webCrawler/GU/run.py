@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from src.main.utils.Logger import Logger
 from src.main.utils.Gmail import Gmail
 from src.main.webCrawler.GU.GUCrawler import GUCrawler
@@ -13,13 +14,20 @@ if __name__ == '__main__':
         if not os.path.exists(folder):
             os.mkdir(folder)
 
-    logger = Logger(Const.CRAWLER_LOG, Const.CRAWLER_LOGGER, Const.LOG_BACKUP_DAYS)
-
+    logger = Logger(Const.CRAWLER_LOG, Const.CRAWLER_LOGGER, Const.LOG_BACKUP_DAYS).setLogger()
     guCrawler = GUCrawler(
         logger,
         Gmail(logger, Const.GMAIL_CONFIG),
         SheetsService(logger, Const.SHEETS_CONFIG)
     )
+
+    # run
+    guCrawler.logger.info("========== Start GUCrawler ==========")
+    startTime = datetime.now()
     guCrawler.run()
+    guCrawler.browser.quit()
+    endTime = datetime.now()
+    guCrawler.logger.info("========== Finish GUCrawler ==========")
+    guCrawler.logger.info(f"總花費: {endTime - startTime}")
 
 

@@ -6,8 +6,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from src.main.utils.Logger import Logger
-from src.main.webCrawler.GU.Constants import Constants as Const
+from logging import Logger
+from src.main.webCrawler.GU.Constants import Constants
 
 # If modifying these scopes, delete the file token.json.
 # SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -15,7 +15,7 @@ from src.main.webCrawler.GU.Constants import Constants as Const
 
 class SheetsService:
     def __init__(self, logger: Logger, config: dict):
-        self.logger = Logger.setLogger()
+        self.logger = logger
         self.config = config
         self.inputSheetID = self.config['inputSheetID']
         self.inputRange = f"{self.config['inputTable']}!{self.config['productCodeColumn']}2:{self.config['productCodeColumn']}"
@@ -37,10 +37,10 @@ class SheetsService:
                 creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'credentials.json', self._SCOPES)
+                    Constants.CREDENTIALS, self._SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
-            with open('token.json', 'w') as token:
+            with open(Constants.TOKEN, 'w') as token:
                 token.write(creds.to_json())
         return creds
 
@@ -60,7 +60,7 @@ class SheetsService:
 
             productCodeList = [row[0] for row in data if row[0] != 'id']
             # self.logger.info(productCodeList)
-            with open(Const.PRODUCT_CODE_LIST, 'w', encoding='utf-8') as f:
+            with open(Constants.PRODUCT_CODE_LIST, 'w', encoding='utf-8') as f:
                 for productCode in productCodeList:
                     f.write(f"{productCode}\n")
         except HttpError as err:

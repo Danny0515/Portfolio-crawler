@@ -13,3 +13,8 @@ class JsonUtils:
     def writeJsonFile(filePath, jsonData):
         with open(filePath, 'w', encoding='utf-8') as file:
             file.write(json.dumps(jsonData, sort_keys=False, indent=4, separators=(',', ': ')))
+
+    @staticmethod
+    def readLinesFromFile(filePath) -> list:
+        with open(filePath, 'r', encoding='utf-8') as f:
+            return [line.replace('\n', '') for line in f.readlines()]

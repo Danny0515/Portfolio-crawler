@@ -4,7 +4,7 @@ from src.main.utils.Logger import Logger
 
 class EmailService(ABC):
     def __init__(self, logger: Logger, config: dict):
-        self.logger = logger.setLogger()
+        self.logger = logger
         self.config = config
         self.sender = config['sender']
         self.recipient = config['recipient']

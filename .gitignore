@@ -3,7 +3,11 @@
 *.pyc
 *.log
 logs/
+tmp.py
+test.py
+data/
 
 # GU
 credentials.json
 token.json
+
