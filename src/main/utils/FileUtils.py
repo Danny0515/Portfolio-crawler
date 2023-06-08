@@ -2,7 +2,7 @@ import json
 import os
 
 
-class JsonUtils:
+class FileUtils:
     @staticmethod
     def readJsonFile(filePath):
         with open(filePath, 'r', encoding='utf-8') as file:

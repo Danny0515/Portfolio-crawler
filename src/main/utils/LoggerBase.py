@@ -4,7 +4,7 @@ import logging.handlers
 from abc import ABC
 
 
-class Logger(ABC):
+class LoggerBase(ABC):
     def __init__(self, logFile: str, loggerName: str, backupDays: int):
         """
         :param logFile: log 存放檔案 /path/log/file.log

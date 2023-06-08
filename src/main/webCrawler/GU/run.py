@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from src.main.utils.Logger import Logger
+from src.main.utils.LoggerBase import LoggerBase
 from src.main.utils.Gmail import Gmail
 from src.main.webCrawler.GU.GUCrawler import GUCrawler
 from src.main.webCrawler.GU.SheetsService import SheetsService
@@ -14,7 +14,7 @@ if __name__ == '__main__':
         if not os.path.exists(folder):
             os.mkdir(folder)
 
-    logger = Logger(Const.CRAWLER_LOG, Const.CRAWLER_LOGGER, Const.LOG_BACKUP_DAYS).setLogger()
+    logger = LoggerBase(Const.CRAWLER_LOG, Const.CRAWLER_LOGGER, Const.LOG_BACKUP_DAYS).setLogger()
     guCrawler = GUCrawler(
         logger,
         Gmail(logger, Const.GMAIL_CONFIG),

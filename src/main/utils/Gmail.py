@@ -5,11 +5,11 @@ from email.utils import make_msgid
 from datetime import datetime
 
 from src.main.utils.EmailService import EmailService
-from src.main.utils.Logger import Logger
+from src.main.utils.LoggerBase import LoggerBase
 
 
 class Gmail(EmailService):
-    def __init__(self, logger: Logger, config: dict):
+    def __init__(self, logger: LoggerBase, config: dict):
         super().__init__(logger, config)
 
     def sendEmail(self, mailContent, subject=None):

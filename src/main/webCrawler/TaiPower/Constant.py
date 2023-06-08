@@ -1,6 +1,17 @@
+import os
 
 
 class Constant:
+    # 指定當前檔案所在資料夾為根目錄
+    ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ""))
+    LOGS_DIR = f'{ROOT}/logs'
+    DATA_DIR = f'{ROOT}/data'
+
+    # Log
+    LOG_BACKUP_DAYS = 7
+    CRAWLER_LOGGER = 'TaiPowerCrawler'
+    CRAWLER_LOG = f'{LOGS_DIR}/TaiPowerCrawler.log'
+
     def __init__(self):
         self._TAI_POWER_URL = {
             'homePage': 'https://hvcs.taipower.com.tw/',
@@ -11,8 +22,8 @@ class Constant:
         self._TAI_POWER_USER_NAME = '<userName>'
         self._TAI_POWER_PASSWORD = '<passWord>'
 
-        self._ELECTRIC_OPTIONS_FILE = '../config/options_taiPower.txt'
-        self._TAI_POWER_METER_INFO_FILE = "../config/taiPowerMeterInfo.json"
+        self._ELECTRIC_OPTIONS_FILE = 'config/options_taiPower.txt'
+        self._TAI_POWER_METER_INFO_FILE = "config/taiPowerMeterInfo.json"
 
         self._IMPLICITLY_WAIT_TIME = 20
 

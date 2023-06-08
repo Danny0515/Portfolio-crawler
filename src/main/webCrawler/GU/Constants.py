@@ -1,5 +1,5 @@
 import os
-from src.main.utils.JsonUtils import JsonUtils
+from src.main.utils.FileUtils import FileUtils
 
 
 class Constants:
@@ -8,7 +8,7 @@ class Constants:
     LOGS_DIR = f'{ROOT}/logs'
     DATA_DIR = f'{ROOT}/data'
     CONFIG_DIR = f'{ROOT}/config'
-    CONFIG = JsonUtils.readJsonFile(f'{CONFIG_DIR}/config.json')
+    CONFIG = FileUtils.readJsonFile(f'{CONFIG_DIR}/config.json')
 
     # Log
     LOG_BACKUP_DAYS = CONFIG['LOG_BACKUP_DAYS']

@@ -7,15 +7,15 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
 from src.main.common.ChromeCrawler import ChromeCrawler
-from src.main.utils.Logger import Logger
+from src.main.utils.LoggerBase import LoggerBase
 from src.main.utils.EmailService import EmailService
-from src.main.utils.JsonUtils import JsonUtils
+from src.main.utils.FileUtils import FileUtils
 from src.main.webCrawler.GU.Constants import Constants
 from src.main.common.WebAction import WebAction
 
 
 class GUCrawler(ChromeCrawler):
-    def __init__(self, logger: Logger, emailService: EmailService, sheetsService):
+    def __init__(self, logger: LoggerBase, emailService: EmailService, sheetsService):
         super().__init__(logger)
         self.email = emailService
         self.sheetsService = sheetsService
@@ -26,7 +26,7 @@ class GUCrawler(ChromeCrawler):
 
     @staticmethod
     def getProductCodeList():
-        return JsonUtils.readLinesFromFile(Constants.PRODUCT_CODE_LIST)
+        return FileUtils.readLinesFromFile(Constants.PRODUCT_CODE_LIST)
 
     def addToDoneList(self, productCode, stockState):
         with open(Constants.DONE_LIST.format(self.today), 'a', encoding='utf-8') as f:
@@ -34,7 +34,7 @@ class GUCrawler(ChromeCrawler):
 
     def getDoneList(self):
         try:
-            doneList = JsonUtils.readLinesFromFile(Constants.DONE_LIST.format(self.today))
+            doneList = FileUtils.readLinesFromFile(Constants.DONE_LIST.format(self.today))
             return {row.split(',')[0]: row.split(',')[1] for row in doneList}
         except FileNotFoundError:
             with open(Constants.DONE_LIST.format(self.today), 'w+', encoding='utf-8') as f:

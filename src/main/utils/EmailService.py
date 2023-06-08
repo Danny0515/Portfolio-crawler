@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from src.main.utils.Logger import Logger
+from src.main.utils.LoggerBase import LoggerBase
 
 
 class EmailService(ABC):
-    def __init__(self, logger: Logger, config: dict):
+    def __init__(self, logger: LoggerBase, config: dict):
         self.logger = logger
         self.config = config
         self.sender = config['sender']
