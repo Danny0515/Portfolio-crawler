@@ -2,19 +2,19 @@
   "LOG_BACKUP_DAYS": 7,
   "URL": "https://www.gu-global.com/tw/zh_TW/product-detail.html?productCode={}",
   "sheets": {
-    "inputSheetID": "1OPrqQDAfPfy9iH-alKnPAIGNSdTne9Y6Dn7QQHhTNXk",
+    "inputSheetID": "your sheet id",
     "inputTable": "工作表1",
     "productCodeColumn": "A",
-    "outputSheetID": "1OPrqQDAfPfy9iH-alKnPAIGNSdTne9Y6Dn7QQHhTNXk",
-    "outputTable": "test",
-    "outputStartColumn": "B",
-    "outputEndColumn": "C"
+    "outputSheetID": "your sheet id",
+    "outputTable": "工作表1",
+    "outputStartColumn": "S",
+    "outputEndColumn": "T"
   },
   "gmail": {
-    "applicationPwd": "emxlrrdvpatxaxnz",
+    "applicationPwd": "your gmail app password",
     "subject": "GU crawler report at {}",
-    "sender": "da.danny0515@gmail.com",
-    "recipient": "da.danny0515@gmail.com,harperchen@tradeserv.com",
+    "sender": "test@gmail.com",
+    "recipient": "test1@gmail.com,test2@gmail.com",
     "cc": ""
   }
 }

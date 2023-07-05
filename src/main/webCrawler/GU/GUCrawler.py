@@ -76,7 +76,8 @@ class GUCrawler(ChromeCrawler):
                     # 檢視爬到的 html(debug)
                     # soup = BeautifulSoup(self.browser.page_source, 'html.parser')
                     # self.logger.info(soup)
-                    if self.explicitWaitActionControl(self.browser, 10, (By.XPATH, '//*[@id="hmall-container"]/div/div[2]/div[2]/div/div[3]/button'),
+
+                    if self.explicitWaitActionControl(self.browser, 10, (By.XPATH, '//*[@id="hmall-container"]/div/div[2]/div[4]/div/div[3]/button'),
                                                       EC.element_to_be_clickable,
                                                       ECMsg='沒有無庫存視窗',
                                                       action=WebAction.clickButton):
@@ -86,12 +87,24 @@ class GUCrawler(ChromeCrawler):
                         # 取得無庫存紅字訊息 (目前有兩個 XPATH, 未來視網頁改版可能增減)
                         outOfStockMsgError = 0
                         outOfStockMsg = '網路商店無庫存'
+                        # try:
+                        #     print(1)
+                        #     outOfStockMsg = self.browser.find_element(By.XPATH, '//*[@id="hmall-container"]/div/div[1]/div[3]/div/div/div/div[1]/div[6]/div[2]/div[5]/div[2]/div[1]/div[2]')
+                        # except NoSuchElementException:
+                        #     print(111)
+                        #     outOfStockMsgError += 1
+                        # try:
+                        #     print(2)
+                        #     outOfStockMsg = self.browser.find_element(By.XPATH, '//*[@id="hmall-container"]/div/div[1]/div[3]/div/div/div/div[1]/div[6]/div[2]/div[4]/div[2]/div[1]/div[2]')
+                        # except NoSuchElementException:
+                        #     print(222)
+                        #     outOfStockMsgError += 1
                         try:
-                            outOfStockMsg = self.browser.find_element(By.XPATH, '//*[@id="hmall-container"]/div/div[1]/div[3]/div/div/div/div[1]/div[6]/div[2]/div[5]/div[2]/div[1]/div[2]')
+                            outOfStockMsg = self.browser.find_element(By.XPATH, '//*[@id="hmall-container"]/div/div[1]/div[4]/div/div/div/div[1]/div[6]/div[2]/div[4]/div[2]/div[1]/div[2]')
                         except NoSuchElementException:
                             outOfStockMsgError += 1
                         try:
-                            outOfStockMsg = self.browser.find_element(By.XPATH, '//*[@id="hmall-container"]/div/div[1]/div[3]/div/div/div/div[1]/div[6]/div[2]/div[4]/div[2]/div[1]/div[2]')
+                            outOfStockMsg = self.browser.find_element(By.XPATH, '//*[@id="hmall-container"]/div/div[1]/div[4]/div/div/div/div[1]/div[6]/div[2]/div[5]/div[2]/div[1]/div[2]')
                         except NoSuchElementException:
                             outOfStockMsgError += 1
 
@@ -99,6 +112,7 @@ class GUCrawler(ChromeCrawler):
                         if outOfStockMsgError == 2:
                             raise NoSuchElementException
                         else:
+                            print(5)
                             self.logger.info(outOfStockMsg.text)
                             # Output
                             self.sheetsService.writeToSheet(f"{outputTable}!{outputStartColumn}{i+2}:{outputEndColumn}{i+2}", [['out of stock', f'{datetime.now()}']], 'USER_ENTERED')
